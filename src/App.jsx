@@ -21,14 +21,15 @@ function App() {
     //Edit
     <>
       <VRButton />
-
       <KeyboardControls
         map={[
           { name: "forward", keys: ["ArrowUp", "w", "W"] },
           { name: "backward", keys: ["ArrowDown", "s", "S"] },
-          { name: "left", keys: ["ArrowLeft", "a", "A"] },
-          { name: "right", keys: ["ArrowRight", "d", "D"] },
+          { name: "left", keys: ["a", "A"] },
+          { name: "right", keys: ["d", "D"] },
           { name: "jump", keys: ["Space"] },
+          { name: "rLeft", keys: ["ArrowLeft"] },
+          { name: "rRight", keys: ["ArrowRight"] }
         ]}>
         <Canvas shadows camera={{ fov: 45 }}>
           <Physics>
@@ -37,7 +38,7 @@ function App() {
                 <Hands />
                 <Controllers />
                 <pointLight position={[100, 100, 100]} />
-                {/* <ambientLight /> */}
+                <ambientLight />
                 <Player />
                 <Scene />
               </XR>

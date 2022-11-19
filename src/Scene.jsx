@@ -38,10 +38,10 @@ function Scene() {
   // Object.keys(scene.children).map((f, index) => console.log(scene.children[f].position))
   return (
     <Suspense fallback={Loader()}>
-      {/* <primitive ref={ref} object={scene} /> */}
+      <primitive object={scene} />
       {/* {Object.keys(scene.children).map(f => <primitive object={scene.children[f]} />)} */}
       {/* {Object.keys(nodes).map((f, index) => <Node key={index} node={nodes[f]} />)} */}
-      {Object.keys(scene.children).map((f, index) => <Node key={index} node={scene.children[f]} />)}
+      {/* {Object.keys(scene.children).map((f, index) => <Node key={index} node={scene.children[f]} />)} */}
     </Suspense>
   )
 }
