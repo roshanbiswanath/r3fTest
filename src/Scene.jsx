@@ -12,7 +12,7 @@ function Loader() {
   return <Html center>{progress} % loaded</Html>
 }
 function Scene() {
-  const { scene, nodes } = useLoader(GLTFLoader, 'puri.glb')
+  const { scene, nodes } = useLoader(GLTFLoader, 'FinalPuriJaganNath.glb')
   // const bounds = useMemo(() => {
   //   const boxes = Object.entries(nodes).map(([key, node]) => {
   //     if (!node || !node.geometry) {
@@ -38,7 +38,7 @@ function Scene() {
   // Object.keys(scene.children).map((f, index) => console.log(scene.children[f].position))
   return (
     <Suspense fallback={Loader()}>
-      <primitive object={scene} />
+      <primitive object={scene} position={[-350,0,100]} />
       {/* {Object.keys(scene.children).map(f => <primitive object={scene.children[f]} />)} */}
       {/* {Object.keys(nodes).map((f, index) => <Node key={index} node={nodes[f]} />)} */}
       {/* {Object.keys(scene.children).map((f, index) => <Node key={index} node={scene.children[f]} />)} */}

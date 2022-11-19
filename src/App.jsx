@@ -29,16 +29,29 @@ function App() {
           { name: "right", keys: ["d", "D"] },
           { name: "jump", keys: ["Space"] },
           { name: "rLeft", keys: ["ArrowLeft"] },
-          { name: "rRight", keys: ["ArrowRight"] }
-        ]}>
+          { name: "rRight", keys: ["ArrowRight"] },
+        ]}
+      >
         <Canvas shadows camera={{ fov: 45 }}>
           <Physics>
-            <Debug color="black" scale={2} >
+            <Debug color="black" scale={2}>
               <XR>
                 <Hands />
                 <Controllers />
-                <pointLight position={[100, 100, 100]} />
-                <ambientLight />
+                <pointLight position={[0, 100, 0]} />
+                <pointLight position={[22.9, 100, -411.57]} />
+                <pointLight
+                  position={[212.86094828785997, 5, -163.93045506982233]}
+                />
+                <pointLight
+                  position={[
+                     -218.30478335045098,
+                     5,
+                     -173.62642724433525,
+                  ]}
+                />
+                <pointLight position={[0, 100, -100]} />
+                {/* <ambientLight /> */}
                 <Player />
                 <Scene />
               </XR>
@@ -47,7 +60,7 @@ function App() {
         </Canvas>
       </KeyboardControls>
     </>
-  )
+  );
 }
 
 export default App

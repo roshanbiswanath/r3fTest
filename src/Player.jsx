@@ -11,7 +11,7 @@ function Player() {
   const [ref, api] = useBox(() => ({
     mass: 0,
     type: "static",
-    position: [100, 10, -100],
+    position: [0, 10, 0],
     material: {
       friction: 0,
       restitution: 1
@@ -25,7 +25,7 @@ function Player() {
   //   ref.current.position.y + 1.6,
   //   ref.current.position.z
   // );
-  camera.position.set(0, 15, 0)
+  camera.position.set(0, 3, 0)
   const left = useController('left')
   const right = useController('right')
   // console.log(useXR())
@@ -78,6 +78,7 @@ function Player() {
     rightDir.z = -direction.x
     XRplayer.position.addScaledVector(rightDir, rSpeed)
     XRplayer.position.addScaledVector(direction, fSpeed)
+    console.log(XRplayer.position);
   })
   //console.log(left.inputSource.gamepad.axes)
   return (
