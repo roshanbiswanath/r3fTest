@@ -1,18 +1,20 @@
-import React from 'react'
-import { useLoader } from '@react-three/fiber'
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader'
-import { Suspense, useMemo } from 'react'
-import { useBox, useConvexPolyhedron, Physics } from '@react-three/cannon'
-import { Html, Plane, useProgress } from '@react-three/drei'
-import { useThree, useFrame } from '@react-three/fiber'
-import Node from './Node'
+import React from "react";
+import { useLoader } from "@react-three/fiber";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader";
+import { Suspense, useMemo } from "react";
+import { useBox, useConvexPolyhedron, Physics } from "@react-three/cannon";
+import { Html, Plane, useProgress } from "@react-three/drei";
+import { useThree, useFrame } from "@react-three/fiber";
+import { RigidBody } from "@react-three/rapier";
+import Node from "./Node";
+
 function Loader() {
-  const { progress } = useProgress()
-  return <Html center>{progress} % loaded</Html>
+  const { progress } = useProgress();
+  return <Html center>{progress} % loaded</Html>;
 }
 function Scene() {
-  const { scene, nodes } = useLoader(GLTFLoader, 'FinalPuriJaganNath.glb')
+  const { scene, nodes } = useLoader(GLTFLoader, "FinalPuriJaganNath.glb");
   // const bounds = useMemo(() => {
   //   const boxes = Object.entries(nodes).map(([key, node]) => {
   //     if (!node || !node.geometry) {
@@ -37,13 +39,24 @@ function Scene() {
   // console.log(useThree())
   // Object.keys(scene.children).map((f, index) => console.log(scene.children[f].position))
   return (
-    <Suspense fallback={Loader()}>
-      <primitive object={scene} position={[-350,0,100]} />
-      {/* {Object.keys(scene.children).map(f => <primitive object={scene.children[f]} />)} */}
+    <>
+      {/* // <Suspense fallback={Loader()}> */}
+      {/* <primitive object={scene} position={[-350, 0, 100]} /> */}
+      {/* <primitive object={scene} position={[-350, 0, 100]} /> */}
+
+      {/* {Object.keys(scene.children).map((f) => (
+        <primitive object={scene.children[f]} />
+      ))} */}
       {/* {Object.keys(nodes).map((f, index) => <Node key={index} node={nodes[f]} />)} */}
-      {/* {Object.keys(scene.children).map((f, index) => <Node key={index} node={scene.children[f]} />)} */}
-    </Suspense>
-  )
+      {Object.keys(scene.children).map((f, index) => (
+        <RigidBody colliders="hull" key={index} type="fixed">
+          <Node key={index} node={scene.children[f]} />
+        </RigidBody>
+      ))}
+
+      {/* // </Suspense> */}
+    </>
+  );
 }
 
-export default Scene
+export default Scene;
