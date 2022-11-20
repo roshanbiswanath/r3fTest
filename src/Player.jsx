@@ -1,11 +1,10 @@
 import React, { useRef } from "react";
-import * as THREE from "three";
+import { Vector3 } from "three";
 
 import { useFrame, useThree } from "@react-three/fiber";
 import { useController, useXR } from "@react-three/xr";
 import { useKeyboardControls } from "@react-three/drei";
 // import { useBox } from "@react-three/cannon";
-import { PerspectiveCamera } from "@react-three/drei";
 import { RigidBody, CapsuleCollider } from "@react-three/rapier";
 
 function Player() {
@@ -35,10 +34,10 @@ function Player() {
   // console.log(useXR())
   const XRplayer = useXR().player;
   // console.log(XRplayer)
-  const direction = new THREE.Vector3();
-  const rightDir = new THREE.Vector3();
+  const direction = new Vector3();
+  const rightDir = new Vector3();
   const [, get] = useKeyboardControls();
-  XRplayer.position.set(300, 50, -350);
+  XRplayer.position.set(0, 80, 0);
   const ref = useRef();
   useFrame((delta) => {
     //console.log(camera.position)
@@ -75,7 +74,7 @@ function Player() {
     if (right && right.inputSource) {
       rotate = right.inputSource.gamepad.axes[2];
     }
-    XRplayer.rotateOnAxis(new THREE.Vector3(0, 1, 0), rotate * 0.01 * -1);
+    XRplayer.rotateOnAxis(new Vector3(0, 1, 0), rotate * 0.01 * -1);
 
     camera.getWorldDirection(direction);
     direction.y = 0;

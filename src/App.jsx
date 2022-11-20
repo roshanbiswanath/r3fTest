@@ -1,13 +1,10 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
 import "./App.css";
 import { Canvas } from "@react-three/fiber";
 import Scene from "./Scene";
-import { OrbitControls } from "@react-three/drei";
-import { PerspectiveCamera, KeyboardControls } from "@react-three/drei";
+import { KeyboardControls } from "@react-three/drei";
 import { VRButton, ARButton, XR, Controllers, Hands } from "@react-three/xr";
 // import { Physics, Debug } from "@react-three/cannon";
-import { Physics, RigidBody, Debug } from "@react-three/rapier";
+import { Physics, Debug } from "@react-three/rapier";
 import Player from "./Player";
 
 function App() {
@@ -34,7 +31,7 @@ function App() {
         ]}
       >
         <Canvas shadows camera={{ fov: 45 }}>
-          <Physics gravity={[0, -100, 0]}>
+          <Physics gravity={[0, -200, 0]}>
             <XR>
               <Hands />
               <Controllers />

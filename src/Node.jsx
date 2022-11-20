@@ -1,7 +1,7 @@
-import React, { useEffect, useRef } from "react";
-import { useBox, useConvexPolyhedron } from "@react-three/cannon";
-import { useFrame } from "@react-three/fiber";
-import Player from "./Player";
+import React from "react";
+// import { useBox, useConvexPolyhedron } from "@react-three/cannon";
+// import { useFrame } from "@react-three/fiber";
+// import Player from "./Player";
 
 function Node(props) {
   // const [ref, api] = useBox(() => ({

@@ -1,11 +1,7 @@
 import React from "react";
 import { useLoader } from "@react-three/fiber";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader";
-import { Suspense, useMemo } from "react";
-import { useBox, useConvexPolyhedron, Physics } from "@react-three/cannon";
-import { Html, Plane, useProgress } from "@react-three/drei";
-import { useThree, useFrame } from "@react-three/fiber";
+import { Html, useProgress } from "@react-three/drei";
 import { RigidBody } from "@react-three/rapier";
 import Node from "./Node";
 
@@ -14,7 +10,7 @@ function Loader() {
   return <Html center>{progress} % loaded</Html>;
 }
 function Scene() {
-  const { scene, nodes } = useLoader(GLTFLoader, "FinalPuriJaganNath.glb");
+  const { scene, nodes } = useLoader(GLTFLoader, "dhauli.glb");
   // const bounds = useMemo(() => {
   //   const boxes = Object.entries(nodes).map(([key, node]) => {
   //     if (!node || !node.geometry) {
